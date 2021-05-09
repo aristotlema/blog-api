@@ -1,14 +1,29 @@
 require('dotenv').config();
 
 const express = require('express');
+const Sequelize = require('sequelize');
 const app = express();
-const mongoose = require('mongoose');
 
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true, useUnifiedTopology: true });
-const db = mongoose.connection;
-db.on('error', (error) => console.log(error));
-db.once('open', () => console.log('Connected To Database'));
 
 app.use(express.json());
 
-app.listen(3002, () => console.log('Server Started'));
+
+const sequelize = new Sequelize('blog_database', 'postgres', 'password', {
+    host: 'localhost',
+    dialect: 'postgres',
+});
+
+
+const testDBConnection = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Connection has been established successfully.');  
+    } catch (err) {
+        console.error('Unable to connect to the database:', error);
+    }
+}
+testDBConnection();
+
+
+
+app.listen(4001, () => console.log('Server Started'));
