@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "start": "nodemon server.js",
+    "createPostModel": "sequelize model:generate --name Post --attributes title:string,body:string"
   },
   "repository": {
     "type": "git",
