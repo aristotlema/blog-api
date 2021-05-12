@@ -2,26 +2,28 @@
 
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkInsert('post', [
+    await queryInterface.bulkInsert('comment', [
     {
       "id": 1,
-      "title": "This is post one",
-      "body": "I am a post",
+      "title": "Great post",
+      "content": "Really great",
+      "postId": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     },
     {
       "id": 2,
-      "title": "Why dogs are so great",
-      "body": "Because I said so",
+      "title": "This is comment 2",
+      "content": "I am also for post 1",
+      "postId": 1,
       "createdAt": new Date(),
       "updatedAt": new Date()
     },
   ], {})
-    
+  
   },
 
   down: async (queryInterface, Sequelize) => {
-    await queryInterface.bulkDelete('post', null, {});
+    await queryInterface.bulkDelete('comment', null, {});
   }
 };
