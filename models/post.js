@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate({ Comment }) {
       // define association here
-      this.hasMany(Comment, { foreignKey: 'postId' });
+      this.hasMany(Comment, { foreignKey: 'postId', as: 'comments' });
     }
   };
   Post.init({
